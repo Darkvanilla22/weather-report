@@ -4,6 +4,9 @@ const forecastContainer = document.getElementById('forecastContainer');
 const searchHistoryContainer = document.getElementById('searchHistory');
 const searchHistorySet = new Set(); // Store unique search history items
 
+// Set the volume (0.0 to 1.0, where 0.0 is silent and 1.0 is maximum volume)
+backgroundMusic.volume = 0.5; // Set volume to 50%
+
 document.getElementById('searchButton').addEventListener('click', searchWeather);
 document.getElementById('searchButton').addEventListener('touchstart', searchWeather);
 
