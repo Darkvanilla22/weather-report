@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Weather Dashboard</title>
+</head>
+<body class="bg-green-100">
+    <header class="bg-green-500 h-20">
+        <p class="text-right text-3xl font-bold text-black pt-5 p-10">Weather Dashboard</p>
+    </header>
+    <div class="container mx-auto px-4 py-8 flex flex-col md:flex-row md:items-start">
+        <div class="w-full md:w-1/4 mr-0 md:mr-4 mb-4 md:mb-0">
+            <div class="bg-green-700 p-4 rounded-lg mb-4">
+                <label for="cityInput" class="text-white mr-2">Enter City:</label>
+                <input type="text" id="cityInput" onkeypress="searchOnEnter(event)" class="p-2 rounded border border-gray-300 focus:border-green-500 focus:outline-none">
+                <button id="searchButton" class="bg-green-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-2 w-full hover:scale-105">Search Weather</button>
+            </div>
+            <p id="errorMessage" class="bg-black text-red-600 font-bold hidden text-center p-4 rounded-lg mb-4">Invalid city. Please try again.</p>
+            <div id="searchHistory" class="bg-green-700 rounded-lg p-4">
+                <p class="text-white font-bold mb-2">Search History</p>
+                <!-- Search history items will be added dynamically here -->
+            </div>
+        </div>
+        <div class="w-full md:w-3/4">
+            <div id="weatherContainer" class="justify-center bg-gray-300 rounded-lg p-4 mb-4">
+                <!-- Current weather information will be displayed here -->
+            </div>
+            <div id="forecastContainer" class="gap-5 bg-green-300 rounded-lg p-4 flex flex-row flex-wrap justify-center"> <!-- Changed from blue to green -->
+                <!-- Forecast for the next 4 days will be displayed here -->
+            </div>
+        </div>
+    </div>
+    <script src="./assets/script.js"></script>
+</body>
+</html>
