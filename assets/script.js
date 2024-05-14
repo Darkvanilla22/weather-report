@@ -4,9 +4,6 @@ const forecastContainer = document.getElementById('forecastContainer');
 const searchHistoryContainer = document.getElementById('searchHistory');
 const searchHistorySet = new Set(); // Store unique search history items
 
-// Set the volume (0.0 to 1.0, where 0.0 is silent and 1.0 is maximum volume)
-backgroundMusic.volume = 0.5; // Set volume to 50%
-
 document.getElementById('searchButton').addEventListener('click', searchWeather);
 document.getElementById('searchButton').addEventListener('touchstart', searchWeather);
 
@@ -16,12 +13,14 @@ document.addEventListener('keydown', event => {
 
 function searchWeather() {
     const cityInput = document.getElementById('cityInput').value.trim().toLowerCase();
-    if (searchHistorySet.has(cityInput)) return;
+
+    if (!searchHistorySet.has(cityInput)) {
+        searchHistorySet.add(cityInput);
+        addHistoryItem(cityInput);
+    }
 
     fetchWeatherData(cityInput).then(({currentData, forecastData}) => {
         displayWeather(currentData, forecastData);
-        searchHistorySet.add(cityInput);
-        addHistoryItem(cityInput);
         toggleErrorMessage(false);
     }).catch(error => {
         console.error('Error fetching weather data:', error);
